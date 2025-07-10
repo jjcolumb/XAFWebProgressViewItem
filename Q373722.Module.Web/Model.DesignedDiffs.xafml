@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="12.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="MyObject_DetailView">
+      <Items>
+        <ProgressViewItem Id="@bac91201-6d5d-45da-a341-dd4b32e51a88" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" ImageName="">
+            <LayoutGroup Id="MyObject" RelativeSize="100" Caption="Name" ImageName="">
+              <LayoutItem Id="Name" SizeConstraintsType="Default" Index="0" RelativeSize="5" />
+              <LayoutItem Id="@bac91201-6d5d-45da-a341-dd4b32e51a88" ViewItem="@bac91201-6d5d-45da-a341-dd4b32e51a88" SizeConstraintsType="Default" Index="1" RelativeSize="94" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
