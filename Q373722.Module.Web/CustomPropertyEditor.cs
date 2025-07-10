@@ -17,34 +17,34 @@ namespace Q373722.Module.Web {
             : base(classType, info.Id) {
         }
         protected override object CreateControlCore() {
-            ASPxLabel lbl = new ASPxLabel();
-            lbl.ClientInstanceName = "myprogresscontrol";
-            lbl.Text = MyController.LongOperationStatus;
-            lbl.ClientSideEvents.Init =
-@"function(s,e) { 
-                                if(window.timer) { 
-                                    window.clearInterval(window.timer);
-                                }
-                                var controlToUpdate = s;
-                                window.timer = window.setInterval(function(){
-                                Q373722.Web.WebService1.GetLongOperationStatus(function(result) { 
-                                    if (controlToUpdate){
-                                        controlToUpdate.SetText(result);
-                                    }
-                                });
-                            },1000
-                            ); 
+            //            ASPxLabel lbl = new ASPxLabel();
+            //            lbl.ClientInstanceName = "myprogresscontrol";
+            //            lbl.Text = MyController.LongOperationStatus;
+            //            lbl.ClientSideEvents.Init =
+            //@"function(s,e) { 
+            //                                if(window.timer) { 
+            //                                    window.clearInterval(window.timer);
+            //                                }
+            //                                var controlToUpdate = s;
+            //                                window.timer = window.setInterval(function(){
+            //                                Q373722.Web.WebService1.GetLongOperationStatus(function(result) { 
+            //                                    if (controlToUpdate){
+            //                                        controlToUpdate.SetText(result);
+            //                                    }
+            //                                });
+            //                            },1000
+            //                            ); 
+            //                        }";
+            //            return lbl;
+            ASPxProgressBar bar = new ASPxProgressBar();
+            bar.ClientInstanceName = "myprogresscontrol";
+            bar.Width = Unit.Percentage(100);
+            bar.ClientSideEvents.Init =
+@"function() {  
+                            var script = 'Q373722.Web.WebService1.GetLongOperationStatus(function(result) {myprogresscontrol.SetPosition(result);} )';  
+                            window.setInterval(script, 1000);  
                         }";
-            return lbl;
-            //            ASPxProgressBar bar = new ASPxProgressBar();
-            //            bar.ClientInstanceName = "myprogresscontrol";
-            //            bar.Width = Unit.Percentage(100);
-            //            bar.ClientSideEvents.Init =
-            //@"function() {  
-            //                var script = 'Q373722.Web.WebService1.GetLongOperationStatus(function(result) {myprogresscontrol.SetPosition(result);} )';  
-            //                window.setInterval(script, 1000);  
-            //            }";
-            //            return bar;
+            return bar;
         }
     }
 }
